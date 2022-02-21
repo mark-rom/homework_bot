@@ -52,8 +52,7 @@ def send_message(bot, message):
 
 def get_api_answer(current_timestamp):
     """
-    Makes a request to Practicum.Homeworks API
-    and returns decoded json response.
+    Makes a request to Practicum.Homeworks API, returns decoded json response.
     Resieves a time in int format as a parameter.
     """
     timestamp = current_timestamp or int(time.time())
@@ -96,8 +95,8 @@ def check_response(response):
 
 def parse_status(homework):
     """
-    Takes a homework dictionary and returns
-    a string with the name and status of current homework.
+    Takes a homework dictionary.
+    Returns a string with the name and status of current homework.
     """
     if 'homework_name' in homework:
         homework_name = homework.get('homework_name')
@@ -119,9 +118,9 @@ def parse_status(homework):
 
 def check_tokens():
     """
+    Returns False if one of TOKENS or CHAT_ID variables is empty.
     Returns True if PRACTICUM_TOKEN, TELEGRAM_TOKEN
-    and TELEGRAM_CHAT_ID variables aren't empty.
-    Returns False if one of them is empty.
+    or TELEGRAM_CHAT_ID aren't empty.
     """
     variables = (PRACTICUM_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID)
     for variable in variables:
