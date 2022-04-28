@@ -138,34 +138,36 @@ def check_tokens():
 def main():
     """General bot's logic."""
     if check_tokens():
-        bot = telegram.Bot(token=TELEGRAM_TOKEN)
-        current_timestamp = int(time.time())
-        prev_upd_time = ''
+        return
 
-        while True:
-            try:
-                response = get_api_answer(current_timestamp)
-                hw_list = check_response(response)
+    bot = telegram.Bot(token=TELEGRAM_TOKEN)
+    current_timestamp = int(time.time())
+    prev_upd_time = ''
 
-                for homework in hw_list:
-                    upd_time = homework.get('date_updated')
+    while True:
+        try:
+            response = get_api_answer(current_timestamp)
+            hw_list = check_response(response)
 
-                    if upd_time != prev_upd_time:
-                        prev_upd_time = upd_time
-                        message = parse_status(homework)
-                        send_message(bot, message)
-                current_timestamp = int(time.time())
+            for homework in hw_list:
+                upd_time = homework.get('date_updated')
 
-            except APIErrException as error:
-                message = f'Сбой в работе программы: {error}'
-                logger.error(message)
-                send_message(bot, message)
+                if upd_time != prev_upd_time:
+                    prev_upd_time = upd_time
+                    message = parse_status(homework)
+                    send_message(bot, message)
+            current_timestamp = int(time.time())
 
-            except Exception as error:
-                logger.error(error)
+        except APIErrException as error:
+            message = f'Сбой в работе программы: {error}'
+            logger.error(message)
+            send_message(bot, message)
 
-            finally:
-                time.sleep(RETRY_TIME)
+        except Exception as error:
+            logger.exception(error)
+
+        finally:
+            time.sleep(RETRY_TIME)
 
 
 if __name__ == '__main__':
