@@ -137,7 +137,7 @@ def check_tokens():
 
 def main():
     """General bot's logic."""
-    if check_tokens():
+    if not check_tokens():
         return
 
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
