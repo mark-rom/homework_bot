@@ -17,8 +17,7 @@ ____
 ### Переменные окружения
 Для работы бота необходимо предоставить следующие переменные окружения:
 - TELEGRAM_TOKEN - токен телеграм-бота. Получается при создании бота [здесь](https://t.me/BotFather).
-- PRACTICUM_TOKEN - токен Я.Практикума. Можно получить [здесь](https://oauth.yandex.ru/authorize?
-response_type=token&client_id=1d0b9dd4d652455a9eb710d450ff456a).
+- PRACTICUM_TOKEN - токен Я.Практикума. Можно получить [здесь](https://oauth.yandex.ru/authorize?response_type=token&client_id=1d0b9dd4d652455a9eb710d450ff456a).
 - TELEGRAM_CHAT_ID - идентификатор чата с пользователем в Telegram. Можно получить [здесь](https://t.me/userinfobot).
 
 ### Логирование
